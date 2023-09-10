@@ -94,4 +94,7 @@ public class Job {
     public int hashCode() {
         return Objects.hash(getId());
     }
+
+    public void setId(int i) {
+    }
 }
