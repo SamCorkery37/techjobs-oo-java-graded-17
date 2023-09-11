@@ -97,4 +97,14 @@ public class Job {
 
     public void setId(int i) {
     }
+
+    @Override
+    public String toString() {
+        return "\nID: " + getId() +
+                "\nName: " + getName() +
+                "\nEmployer: " + getEmployer() +
+                "\nLocation: " + getLocation() +
+                "\nPosition Type: " + getPositionType() +
+                "\nCore Competency: " + getCoreCompetency() + "\n";
+    }
 }

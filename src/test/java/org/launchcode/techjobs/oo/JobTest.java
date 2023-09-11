@@ -42,4 +42,40 @@ public class JobTest {
 
         assertFalse(job1.equals(job2));
     }
+
+
+    @Test
+    public void testToString() {
+        Job job = new Job("Product tester", new Employer("ACME"), new Location("Desert"), new PositionType("Quality control"), new CoreCompetency("Persistence"));
+
+        String expected = "\nID: " + job.getId() +
+                "\nName: Product tester" +
+                "\nEmployer: ACME" +
+                "\nLocation: Desert" +
+                "\nPosition Type: Quality control" +
+                "\nCore Competency: Persistence\n";
+
+        assertEquals(expected, job.toString());
+    }
+
+
+    @Test
+    public void testToStringStartsAndEndsWithNewLine() {
+        Job job = new Job("Product tester", new Employer("ACME"), new Location("Desert"), new PositionType("Quality control"), new CoreCompetency("Persistence"));
+
+        String jobToString = job.toString();
+
+        assertTrue(jobToString.startsWith("\n"));
+        assertTrue(jobToString.endsWith("\n"));
+
+
+        String expected = "ID: " + job.getId() +
+                "\nName: Product tester" +
+                "\nEmployer: ACME" +
+                "\nLocation: Desert" +
+                "\nPosition Type: Quality control" +
+                "\nCore Competency: Persistence";
+        assertEquals(expected, jobToString.trim());
+    }
+
 }
