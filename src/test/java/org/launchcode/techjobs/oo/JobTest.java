@@ -10,9 +10,9 @@ public class JobTest {
         Job job1 = new Job();
         Job job2 = new Job();
 
-        job1.setId(1);
+        job1.setId(7);
 
-        assertEquals(1, job1.getId(), job2.getId());
+        assertEquals(7, job1.getId(), job2.getId());
     }
 
     @Test
@@ -76,6 +76,36 @@ public class JobTest {
                 "\nPosition Type: Quality control" +
                 "\nCore Competency: Persistence";
         assertEquals(expected, jobToString.trim());
+    }
+
+    @Test
+    public void testToStringContainsCorrectLabelsAndData() {
+        Job job = new Job("Product tester", new Employer("ACME"), new Location("Desert"), new PositionType("Quality control"), new CoreCompetency("Persistence"));
+        String expectedString =
+                "\nID: " + job.getId() +
+                        "\nName: Product tester" +
+                        "\nEmployer: ACME" +
+                        "\nLocation: Desert" +
+                        "\nPosition Type: Quality control" +
+                        "\nCore Competency: Persistence" +
+                        "\n";
+        assertEquals(expectedString, job.toString());
+    }
+
+    @Test
+    public void testToStringHandlesEmptyField() {
+        Job job = new Job();
+        String expectedString =
+                "\nID: " + job.getId() +
+                        "\nName: Data not available" +
+                        "\nEmployer: Data not available" +
+                        "\nLocation: Data not available" +
+                        "\nPosition Type: Data not available" +
+                        "\nCore Competency: Data not available" +
+                        "\n";
+        assertEquals(expectedString, job.toString());
+
+
     }
 
 }
